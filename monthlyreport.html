@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Service Report</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h4>Monthly Service Report - {{ month }}</h4>
+    <p>Dear {{ customer_name }},</p>
+    <p>Here is a summary of your service activities for the month of {{ month }}:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Service ID</th>
+                <th>Service Name</th>
+                <th>Time Required</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ser in service_details %}
+                <tr>
+                    <td>{{ ser.id }}</td>
+                    <td>{{ ser.ser_name }}</td>
+                    <td>{{ ser.time_required }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <footer>
+        <p>You have requested {{ total_requested }} services this month, and {{ total_closed }} have been completed.</p>
+    </footer>
+</body>
+</html>
